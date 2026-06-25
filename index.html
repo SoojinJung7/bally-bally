@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BALLY BALLY — Playground for Bold Ideas</title>
+  <meta name="description" content="BALLY BALLY — Soojin Jung의 개인 프로젝트 스튜디오. 대담한 아이디어가 노는 곳." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;600;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%231A1919'/%3E%3Ccircle cx='38' cy='50' r='18' fill='%23FF5F14'/%3E%3Ccircle cx='66' cy='50' r='18' fill='%23C90404'/%3E%3C/svg%3E" />
+</head>
+<body>
+  <!-- ===== Header ===== -->
+  <header class="site-header" id="header">
+    <div class="container header-inner">
+      <a href="#top" class="brand" aria-label="BALLY BALLY home">
+        <span class="brand-dots"><i></i><i></i></span>
+        <span class="brand-name">BALLY&nbsp;BALLY</span>
+      </a>
+      <nav class="nav" id="nav">
+        <a href="#works">Works</a>
+        <a href="#updates">Updates</a>
+        <a href="#stats">Numbers</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="header-actions">
+        <button class="lang" id="langBtn" type="button">KR</button>
+        <button class="menu-toggle" id="menuToggle" aria-label="Menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== Hero ===== -->
+  <main id="top">
+    <section class="hero" id="hero">
+      <div class="hero-marquee" aria-hidden="true">
+        <div class="marquee-track">
+          <span>PLAY&nbsp;·&nbsp;BUILD&nbsp;·&nbsp;SHIP&nbsp;·&nbsp;REPEAT&nbsp;·&nbsp;</span>
+          <span>PLAY&nbsp;·&nbsp;BUILD&nbsp;·&nbsp;SHIP&nbsp;·&nbsp;REPEAT&nbsp;·&nbsp;</span>
+        </div>
+      </div>
+      <div class="container hero-inner">
+        <p class="hero-eyebrow">A personal project studio</p>
+        <h1 class="hero-title">
+          <span class="line">PLAYGROUND</span>
+          <span class="line">FOR <span class="accent">BOLD</span></span>
+          <span class="line">IDEAS<span class="dot-orange">.</span></span>
+        </h1>
+        <p class="hero-sub">
+          BALLY BALLY는 Soojin Jung이 직접 만들고 실험하는 프로젝트들이 모이는 공간입니다.
+          빠르게 만들고, 대담하게 보여줍니다.
+        </p>
+        <div class="hero-cta">
+          <a href="#works" class="btn btn-primary">프로젝트 보기</a>
+          <a href="#contact" class="btn btn-ghost">함께하기 →</a>
+        </div>
+      </div>
+      <div class="hero-glow" aria-hidden="true"></div>
+    </section>
+
+    <!-- ===== Updates / News ===== -->
+    <section class="section updates" id="updates">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="section-title">UPDATES</h2>
+          <a href="#" class="section-link">전체 보기 →</a>
+        </div>
+        <div class="card-grid" id="updatesGrid">
+          <!-- cards injected by script.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Works ===== -->
+    <section class="section works" id="works">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="section-title">WORKS</h2>
+          <p class="section-desc">아이디어에서 출시까지, 진행 중이거나 끝난 프로젝트들.</p>
+        </div>
+        <div class="works-grid" id="worksGrid">
+          <!-- tiles injected by script.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Stats ===== -->
+    <section class="section stats" id="stats">
+      <div class="container stats-inner">
+        <div class="stat">
+          <span class="stat-num" data-target="12">0</span>
+          <span class="stat-label">Projects shipped</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num" data-target="48">0</span>
+          <span class="stat-label">Experiments</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num" data-target="3">0</span>
+          <span class="stat-label">Years building</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num" data-target="100" data-suffix="%">0</span>
+          <span class="stat-label">Made with love</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== About ===== -->
+    <section class="section about" id="about">
+      <div class="container about-inner">
+        <h2 class="section-title">ABOUT</h2>
+        <p class="about-lead">
+          <span class="accent">BALLY BALLY</span>는 "빨리빨리" 정신으로 움직이는 1인 프로젝트 스튜디오입니다.
+        </p>
+        <p class="about-body">
+          완벽한 계획보다 빠른 실행을 믿습니다. 아이디어가 떠오르면 만들고, 만들면 보여주고,
+          피드백을 받으면 다시 만듭니다. 이 사이트는 그 과정을 기록하고 공유하기 위한 홈베이스입니다.
+        </p>
+      </div>
+    </section>
+
+    <!-- ===== Contact CTA ===== -->
+    <section class="section contact" id="contact">
+      <div class="container contact-inner">
+        <h2 class="contact-title">LET'S<br />BUILD<br /><span class="accent">SOMETHING.</span></h2>
+        <a href="mailto:soojinjung7@gmail.com" class="btn btn-primary btn-lg">이메일 보내기</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-top">
+        <a href="#top" class="brand brand-footer">
+          <span class="brand-dots"><i></i><i></i></span>
+          <span class="brand-name">BALLY&nbsp;BALLY</span>
+        </a>
+        <div class="socials">
+          <a href="https://github.com/SoojinJung7" target="_blank" rel="noopener">GitHub</a>
+          <a href="#" target="_blank" rel="noopener">Instagram</a>
+          <a href="#" target="_blank" rel="noopener">YouTube</a>
+          <a href="#" target="_blank" rel="noopener">X</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© <span id="year">2026</span> BALLY BALLY — a personal project by Soojin Jung.</p>
+        <p class="footer-note">Design benchmarked structurally; all content original.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
