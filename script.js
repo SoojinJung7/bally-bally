@@ -4,10 +4,12 @@
 
   // ----- Data (original placeholder content) -----
   var works = [
-    { num: "01", cat: "Web App", name: "Quick Notes", grad: "linear-gradient(135deg,#FF5F14,#C90404)" },
-    { num: "02", cat: "Experiment", name: "Pixel Playground", grad: "linear-gradient(135deg,#C90404,#1A1919)" },
-    { num: "03", cat: "Tool", name: "Color Swapper", grad: "linear-gradient(135deg,#FF5F14,#1A1919)" },
-    { num: "04", cat: "Prototype", name: "Motion Lab", grad: "linear-gradient(135deg,#1A1919,#FF5F14)" }
+    { num: "01", cat: "Soccer / Futsal", name: "축구 / 풋살", grad: "linear-gradient(135deg,#FF5F14,#C90404)" },
+    { num: "02", cat: "Basketball", name: "농구", grad: "linear-gradient(135deg,#C90404,#1A1919)" },
+    { num: "03", cat: "Badminton / Pickleball", name: "배드민턴 / 피클볼", grad: "linear-gradient(135deg,#FF5F14,#1A1919)" },
+    { num: "04", cat: "Inline / Fitness", name: "인라인 / 생활체육", grad: "linear-gradient(135deg,#1A1919,#FF5F14)" },
+    { num: "05", cat: "Pilates", name: "필라테스", grad: "linear-gradient(135deg,#C90404,#FF5F14)" },
+    { num: "06", cat: "Dance", name: "방송댄스", grad: "linear-gradient(135deg,#1A1919,#C90404)" }
   ];
 
   // ----- Render works -----
