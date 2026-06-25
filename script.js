@@ -3,31 +3,12 @@
   "use strict";
 
   // ----- Data (original placeholder content) -----
-  var updates = [
-    { tag: "Launch", date: "2026.06.20", title: "bally-bally 홈페이지 오픈", arrow: "자세히 →" },
-    { tag: "Build", date: "2026.06.12", title: "주말 해커톤: 48시간 만에 만든 미니 앱", arrow: "자세히 →" },
-    { tag: "Note", date: "2026.05.30", title: "빨리 만들고 빨리 고치는 법에 대한 메모", arrow: "자세히 →" }
-  ];
-
   var works = [
     { num: "01", cat: "Web App", name: "Quick Notes", grad: "linear-gradient(135deg,#FF5F14,#C90404)" },
     { num: "02", cat: "Experiment", name: "Pixel Playground", grad: "linear-gradient(135deg,#C90404,#1A1919)" },
     { num: "03", cat: "Tool", name: "Color Swapper", grad: "linear-gradient(135deg,#FF5F14,#1A1919)" },
     { num: "04", cat: "Prototype", name: "Motion Lab", grad: "linear-gradient(135deg,#1A1919,#FF5F14)" }
   ];
-
-  // ----- Render updates -----
-  var ug = document.getElementById("updatesGrid");
-  updates.forEach(function (u) {
-    var c = document.createElement("article");
-    c.className = "card";
-    c.innerHTML =
-      '<span class="card-tag">' + u.tag + "</span>" +
-      '<span class="card-date">' + u.date + "</span>" +
-      '<h3 class="card-title">' + u.title + "</h3>" +
-      '<span class="card-arrow">' + u.arrow + "</span>";
-    ug.appendChild(c);
-  });
 
   // ----- Render works -----
   var wg = document.getElementById("worksGrid");

@@ -270,6 +270,42 @@ a { color: inherit; text-decoration: none; }
 .section-link:hover { color: var(--red); }
 .section-desc { color: var(--muted); max-width: 420px; }
 
+/* ===== BALLY NEWS (video + content) ===== */
+.news-feature {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+.news-video {
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: #000;
+  aspect-ratio: 16 / 9;
+}
+.news-video video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.news-content { padding: 8px 0; }
+.news-title {
+  font-family: "Pretendard Variable", Pretendard, system-ui, sans-serif;
+  font-weight: 600; /* SemiBold */
+  font-size: 18px;
+  line-height: 1.4;
+  margin-bottom: 14px;
+}
+.news-body {
+  font-family: "Pretendard Variable", Pretendard, system-ui, sans-serif;
+  font-weight: 400; /* Regular */
+  font-size: 14px;
+  line-height: 1.75;
+  color: var(--muted);
+}
+
 /* ===== Update cards ===== */
 .card-grid {
   display: grid;
@@ -425,6 +461,7 @@ a { color: inherit; text-decoration: none; }
   .menu-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
   .card-grid { grid-template-columns: 1fr; }
+  .news-feature { grid-template-columns: 1fr; gap: 24px; }
   .works-grid { grid-template-columns: 1fr; }
   .stats-inner { grid-template-columns: repeat(2, 1fr); gap: 36px 24px; }
   .section { padding: 72px 0; }
