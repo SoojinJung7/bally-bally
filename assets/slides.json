@@ -1,0 +1,8 @@
+{
+  "intervalMs": 3000,
+  "slides": [
+    { "src": "assets/slides/slide-1.jpg", "alt": "Red Boosters 농구 캠프 - 코트에 모인 선수들" },
+    { "src": "assets/slides/slide-2.jpg", "alt": "Red Boosters 농구 캠프 - 코치와 팀 미팅" },
+    { "src": "assets/slides/slide-3.jpg", "alt": "Red Boosters 농구 캠프 - 단체 기념 촬영" }
+  ]
+}

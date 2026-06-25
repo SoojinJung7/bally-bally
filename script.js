@@ -44,6 +44,80 @@
     wg.appendChild(a);
   });
 
+  // ----- Hero slideshow (data-driven from assets/slides.json) -----
+  (function initSlideshow() {
+    var stage = document.getElementById("heroSlideshow");
+    if (!stage) return;
+
+    var FALLBACK = {
+      intervalMs: 3000,
+      slides: [
+        { src: "assets/slides/slide-1.jpg", alt: "" },
+        { src: "assets/slides/slide-2.jpg", alt: "" },
+        { src: "assets/slides/slide-3.jpg", alt: "" }
+      ]
+    };
+
+    fetch("assets/slides.json", { cache: "no-store" })
+      .then(function (r) { return r.ok ? r.json() : Promise.reject(); })
+      .then(build)
+      .catch(function () { build(FALLBACK); });
+
+    function build(cfg) {
+      var slides = (cfg && cfg.slides) || [];
+      if (!slides.length) return;
+      var interval = (cfg && cfg.intervalMs) || 3000;
+
+      var els = slides.map(function (s, i) {
+        var div = document.createElement("div");
+        div.className = "hero-slide" + (i === 0 ? " active" : "");
+        div.style.backgroundImage = 'url("' + s.src + '")';
+        div.setAttribute("role", "img");
+        if (s.alt) div.setAttribute("aria-label", s.alt);
+        stage.appendChild(div);
+        // preload
+        var img = new Image();
+        img.src = s.src;
+        return div;
+      });
+
+      // indicator dots
+      var dots = document.createElement("div");
+      dots.className = "hero-dots";
+      var dotEls = slides.map(function (_, i) {
+        var b = document.createElement("button");
+        b.type = "button";
+        b.setAttribute("aria-label", "슬라이드 " + (i + 1));
+        if (i === 0) b.className = "active";
+        b.addEventListener("click", function () { go(i); restart(); });
+        dots.appendChild(b);
+        return b;
+      });
+      stage.parentNode.appendChild(dots);
+
+      var current = 0, timer = null;
+      function go(n) {
+        els[current].classList.remove("active");
+        dotEls[current].classList.remove("active");
+        current = (n + els.length) % els.length;
+        els[current].classList.add("active");
+        dotEls[current].classList.add("active");
+      }
+      function next() { go(current + 1); }
+      function start() {
+        if (els.length > 1) timer = setInterval(next, interval);
+      }
+      function restart() { clearInterval(timer); start(); }
+      start();
+
+      // pause when tab is hidden
+      document.addEventListener("visibilitychange", function () {
+        if (document.hidden) clearInterval(timer);
+        else restart();
+      });
+    }
+  })();
+
   // ----- Sticky header on scroll -----
   var header = document.getElementById("header");
   function onScroll() {
