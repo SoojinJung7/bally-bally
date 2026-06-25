@@ -4,12 +4,12 @@
 
   // ----- Data (original placeholder content) -----
   var works = [
-    { num: "01", cat: "Soccer / Futsal", name: "축구 / 풋살", grad: "linear-gradient(135deg,#FF5F14,#C90404)" },
-    { num: "02", cat: "Basketball", name: "농구", grad: "linear-gradient(135deg,#C90404,#1A1919)" },
-    { num: "03", cat: "Badminton / Pickleball", name: "배드민턴 / 피클볼", grad: "linear-gradient(135deg,#FF5F14,#1A1919)" },
-    { num: "04", cat: "Inline / Fitness", name: "인라인 / 생활체육", grad: "linear-gradient(135deg,#1A1919,#FF5F14)" },
-    { num: "05", cat: "Pilates", name: "필라테스", grad: "linear-gradient(135deg,#C90404,#FF5F14)" },
-    { num: "06", cat: "Dance", name: "방송댄스", grad: "linear-gradient(135deg,#1A1919,#C90404)" }
+    { num: "01", cat: "Soccer / Futsal", name: "축구 / 풋살", url: "https://bally-junior.com/sports/soccer.html", grad: "linear-gradient(135deg,#FF5F14,#C90404)" },
+    { num: "02", cat: "Basketball", name: "농구", url: "https://bally-junior.com/sports/basketball.html", grad: "linear-gradient(135deg,#C90404,#1A1919)" },
+    { num: "03", cat: "Badminton / Pickleball", name: "배드민턴 / 피클볼", url: "https://bally-junior.com/sports/badminton.html", grad: "linear-gradient(135deg,#FF5F14,#1A1919)" },
+    { num: "04", cat: "Inline / Fitness", name: "인라인 / 생활체육", url: "https://bally-junior.com/sports/inline.html", grad: "linear-gradient(135deg,#1A1919,#FF5F14)" },
+    { num: "05", cat: "Pilates", name: "필라테스", url: "https://bally-junior.com/sports/pilates.html", grad: "linear-gradient(135deg,#C90404,#FF5F14)" },
+    { num: "06", cat: "Dance", name: "방송댄스", url: "https://bally-junior.com/sports/dance.html", grad: "linear-gradient(135deg,#1A1919,#C90404)" }
   ];
 
   // ----- Render works -----
@@ -17,13 +17,15 @@
   works.forEach(function (w) {
     var a = document.createElement("a");
     a.className = "work";
-    a.href = "#";
+    a.href = w.url || "#";
+    if (w.url) { a.target = "_blank"; a.rel = "noopener"; }
     a.style.setProperty("--grad", w.grad);
     a.innerHTML =
       '<span class="work-num">' + w.num + "</span>" +
       '<div class="work-info">' +
       '<div class="work-cat">' + w.cat + "</div>" +
-      '<div class="work-name">' + w.name + "</div></div>";
+      '<div class="work-name">' + w.name + "</div>" +
+      '<div class="work-go">소개 보기 →</div></div>';
     wg.appendChild(a);
   });
 
