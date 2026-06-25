@@ -291,12 +291,22 @@ a { color: inherit; text-decoration: none; }
   display: block;
 }
 .news-content { padding: 8px 0; }
+.news-index {
+  font-family: "Archivo", sans-serif;
+  font-weight: 800;
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  color: var(--orange);
+  display: block;
+  margin-bottom: 10px;
+}
 .news-title {
   font-family: "Pretendard Variable", Pretendard, system-ui, sans-serif;
   font-weight: 600; /* SemiBold */
   font-size: 18px;
   line-height: 1.4;
   margin-bottom: 14px;
+  transition: opacity 0.3s var(--ease);
 }
 .news-body {
   font-family: "Pretendard Variable", Pretendard, system-ui, sans-serif;
@@ -304,7 +314,18 @@ a { color: inherit; text-decoration: none; }
   font-size: 14px;
   line-height: 1.75;
   color: var(--muted);
+  transition: opacity 0.3s var(--ease);
 }
+.news-fading { opacity: 0; }
+.news-dots { display: flex; gap: 10px; margin-top: 22px; }
+.news-dots button {
+  width: 30px; height: 4px;
+  border: none; border-radius: 999px;
+  background: rgba(255, 255, 255, 0.22);
+  cursor: pointer; padding: 0;
+  transition: background 0.3s var(--ease), width 0.3s var(--ease);
+}
+.news-dots button.active { background: var(--orange); width: 46px; }
 
 /* ===== Update cards ===== */
 .card-grid {

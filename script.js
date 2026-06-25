@@ -99,6 +99,88 @@
     }
   })();
 
+  // ----- BALLY NEWS playlist (auto-advance + synced title/caption) -----
+  (function initNews() {
+    var video = document.getElementById("newsVideo");
+    var titleEl = document.getElementById("newsTitle");
+    var bodyEl = document.getElementById("newsBody");
+    var indexEl = document.getElementById("newsIndex");
+    var dotsEl = document.getElementById("newsDots");
+    if (!video || !titleEl || !bodyEl) return;
+
+    fetch("assets/news.json", { cache: "no-store" })
+      .then(function (r) { return r.ok ? r.json() : Promise.reject(); })
+      .then(function (cfg) { build((cfg && cfg.items) || []); })
+      .catch(function () {/* leave static fallback content as-is */});
+
+    function build(items) {
+      if (!items.length) return;
+      var current = 0;
+      var pad = function (n) { return (n < 10 ? "0" : "") + n; };
+
+      // indicator dots
+      var dotEls = items.map(function (_, i) {
+        var b = document.createElement("button");
+        b.type = "button";
+        b.setAttribute("aria-label", "영상 " + (i + 1));
+        b.addEventListener("click", function () { load(i, true); });
+        dotsEl.appendChild(b);
+        return b;
+      });
+
+      function paintMeta(i) {
+        var it = items[i];
+        // fade text out/in for a smooth swap
+        titleEl.classList.add("news-fading");
+        bodyEl.classList.add("news-fading");
+        setTimeout(function () {
+          titleEl.textContent = it.title || "";
+          bodyEl.textContent = it.caption || "";
+          indexEl.textContent = pad(i + 1) + " / " + pad(items.length);
+          titleEl.classList.remove("news-fading");
+          bodyEl.classList.remove("news-fading");
+        }, 200);
+        dotEls.forEach(function (d, di) { d.classList.toggle("active", di === i); });
+      }
+
+      function load(i, autoplay) {
+        current = (i + items.length) % items.length;
+        var it = items[current];
+        video.src = it.src;
+        video.load();
+        paintMeta(current);
+        if (autoplay) {
+          var p = video.play();
+          if (p && p.catch) p.catch(function () {/* autoplay blocked — user can press play */});
+        }
+      }
+
+      // when a clip ends, immediately continue to the next one
+      video.addEventListener("ended", function () { load(current + 1, true); });
+
+      // initial clip (no autoplay yet — starts when scrolled into view)
+      load(0, false);
+
+      // muted autoplay once the section is visible (mobile-friendly)
+      if ("IntersectionObserver" in window) {
+        var started = false;
+        var vio = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (e) {
+              if (e.isIntersecting && !started) {
+                started = true;
+                var p = video.play();
+                if (p && p.catch) p.catch(function () {});
+              }
+            });
+          },
+          { threshold: 0.5 }
+        );
+        vio.observe(video);
+      }
+    }
+  })();
+
   // ----- Sticky header on scroll -----
   var header = document.getElementById("header");
   function onScroll() {
