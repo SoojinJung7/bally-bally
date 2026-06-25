@@ -1,0 +1,49 @@
+# ===== BALLY BALLY — Sveltia/Decap CMS config =====
+backend:
+  name: github
+  repo: SoojinJung7/bally-bally
+  branch: main
+  # 아래 base_url 은 GitHub 로그인을 처리하는 OAuth 프록시 주소입니다.
+  # ADMIN_SETUP.md 의 안내대로 Cloudflare Worker 를 배포한 뒤 그 주소로 바꿔주세요.
+  base_url: https://REPLACE-WITH-YOUR-OAUTH-WORKER.workers.dev
+
+# 업로드된 사진이 저장되는 repo 폴더
+media_folder: "assets/slides"
+# 사이트에서 사진을 불러올 때 쓰는 경로 (slides.json 에 기록되는 값)
+public_folder: "assets/slides"
+
+# 에디터가 PC에서 미리 테스트할 수 있는 로컬 모드 허용
+local_backend: true
+
+collections:
+  - name: "site"
+    label: "사이트"
+    files:
+      - name: "slides"
+        label: "히어로 슬라이드"
+        file: "assets/slides.json"
+        description: "메인 화면 상단에 3초씩 돌아가는 사진들을 관리합니다."
+        fields:
+          - name: intervalMs
+            label: "전환 간격 (밀리초, 3000 = 3초)"
+            widget: number
+            default: 3000
+            value_type: int
+            min: 1000
+          - name: slides
+            label: "슬라이드 목록"
+            label_singular: "슬라이드"
+            widget: list
+            summary: "{{fields.alt}}"
+            fields:
+              - name: src
+                label: "사진"
+                widget: image
+                choose_url: false
+                media_library:
+                  config:
+                    max_file_size: 8000000
+              - name: alt
+                label: "사진 설명 (대체 텍스트, 선택)"
+                widget: string
+                required: false
